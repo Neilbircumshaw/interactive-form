@@ -224,6 +224,7 @@ parentActivities.addEventListener("change", () => {
 	const cvv_message = document.createElement("span");
 	const push_dat_div_up1 = document.querySelector(".col-3");
 	let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;	
+        let numbers = /^[0-9]+$/;
 	
 	 	 
 
@@ -296,7 +297,7 @@ parentActivities.addEventListener("change", () => {
 		}
 		
 		// this is for TASK 2 of the exceeds grade to display different messages, one when nothing is input and another when less than 13 but more than 16 is typed 
-		
+		if(payment_option.value === "credit card"){
 		if(credit_card_number.value.length === 0){
 		  e.preventDefault();
 		  ccn_message.textContent = "Please enter a credit card number in the field below.";
@@ -309,7 +310,7 @@ parentActivities.addEventListener("change", () => {
 		
 			
 		
-		else if(credit_card_number.value.length < 13 || credit_card_number.value.length > 16 ){
+		else if(credit_card_number.value.length < 13 || credit_card_number.value.length > 16 || !numbers.test(credit_card_number.value) ){
 		  e.preventDefault();
 		  ccn_message.textContent = "Please provide a valid credit card number. Thank you.";
 	      ccn_message.style.color = "#cc0000";
@@ -323,7 +324,7 @@ parentActivities.addEventListener("change", () => {
 		 ccn_message.style.display = "none";} 
 		 
 		 
-		 if(zipcode.value.length < 5 || zipcode.value.length > 5 ){
+		 if(zipcode.value.length < 5 || zipcode.value.length > 5 || !numbers.test(zipcode.value)){
 		  e.preventDefault();
 		  zip_message.textContent = "Please provide a valid zipcode.";
 	      zip_message.style.color = "#cc0000";
@@ -337,7 +338,7 @@ parentActivities.addEventListener("change", () => {
 		 zip_message.style.display = "none";} 
 		 
 		 
-		 if(CVV.value.length < 3 || CVV.value.length > 3 ){
+		 if(CVV.value.length < 3 || CVV.value.length > 3 || !numbers.test(CVV.value)){
 		  e.preventDefault();
 		  cvv_message.textContent = "Please provide a valid CVV number.";
 	      cvv_message.style.color = "#cc0000";
@@ -352,7 +353,7 @@ parentActivities.addEventListener("change", () => {
 		 cvv_message.style.display = "none";} 
 					
 				
-	});
+		}});
 	
 	
 	
@@ -397,7 +398,7 @@ if(credit_card_number.value.length === 0){
 		
 			
 		
-		else if(credit_card_number.value.length < 13 || credit_card_number.value.length > 16 ){
+		else if(credit_card_number.value.length < 13 || credit_card_number.value.length > 16 || !numbers.test(credit_card_number.value)){
 		  e.preventDefault();
 		  ccn_message.textContent = "Please provide a valid credit card number. Thank you.";
 	      ccn_message.style.color = "#cc0000";
